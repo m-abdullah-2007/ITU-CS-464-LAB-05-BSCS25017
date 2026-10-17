@@ -1,19 +1,53 @@
 using UnityEngine;
 
+public enum CoinType { Normal, Red, Blue }
+
 public class Coin : MonoBehaviour
 {
     [SerializeField] int value = 1;
     [SerializeField] float spinSpeed = 90f;
-    // Space.World makes it Rotate around its own axis
+
+    CoinType type = CoinType.Normal;
+
+    void Awake() => ApplyColor();
+
+    // Called by the Spawner right after Instantiate
+    public void Init(CoinType newType)
+    {
+        type = newType;
+        ApplyColor();
+    }
+
+    void ApplyColor()
+    {
+        Renderer r = GetComponent<Renderer>();
+        if (r == null) return;
+        switch (type)
+        {
+            case CoinType.Red: r.material.color = Color.red; break;
+            case CoinType.Blue: r.material.color = Color.blue; break;
+            default: r.material.color = Color.yellow; break;
+        }
+    }
+
     void Update() => transform.Rotate(0f, spinSpeed * Time.deltaTime, 0f, Space.World);
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Coin touched by {other.name}");
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+
+        switch (type)
         {
-            GameManager.Instance.AddScore(value);
-            Destroy(gameObject);   // gameObject, NOT this
+            case CoinType.Normal:
+                GameManager.Instance.AddScore(value);
+                break;
+            case CoinType.Red:
+                GameManager.Instance.CollectRedCoin(other.transform.position);
+                break;
+            case CoinType.Blue:
+                GameManager.Instance.AddBonus();
+                break;
         }
+        Destroy(gameObject);
     }
 }
