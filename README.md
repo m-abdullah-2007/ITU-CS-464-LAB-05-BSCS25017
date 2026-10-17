@@ -5,7 +5,7 @@
 1. **`ForceMode.Force` for player movement**
    Movement is a continuous push applied every `FixedUpdate`, and `Force` accounts for mass. `Impulse` every step would act as 50 kicks per second.
 2. **Sphere Collider (trigger) for the coin**
-   It is cheap and looks the same however the coin spins. Is Trigger lets the ball pass through and fires `OnTriggerEnter`.
+   It is cheap in sense of calculations and looks the same however the coin spins. Is Trigger lets the ball pass through and fires `OnTriggerEnter`.
 3. **`Destroy(gameObject)`, not `Destroy(this)`**
    `Destroy(this)` only removes the script and leaves a frozen coin. `Destroy(gameObject)` removes the whole coin.
 4. **Spawning with `InvokeRepeating` + `Instantiate`**
