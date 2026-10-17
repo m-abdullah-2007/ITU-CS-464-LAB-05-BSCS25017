@@ -15,8 +15,9 @@ public class Spawner : MonoBehaviour
         if (transform.childCount >= maxCoins) return;
         float x = Random.Range(-area, area);
         float z = Random.Range(-area, area);
-        Vector3 pos = new Vector3(x, 0.5f, z);
+        Vector3 pos = new Vector3(x, 1f, z);
         if (Vector3.Distance(pos, player.position) < 2f) return;
-        Instantiate(coinPrefab, pos, Quaternion.identity, transform);
+        // Keep the prefab's own rotation (the 90,0,0 that stands the coin up)
+        Instantiate(coinPrefab, pos, coinPrefab.transform.rotation, transform);
     }
 }
