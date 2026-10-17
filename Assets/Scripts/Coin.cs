@@ -12,7 +12,7 @@ public class Coin : MonoBehaviour
         Debug.Log($"Coin touched by {other.name}");
         if (other.CompareTag("Player"))
         {
-            //GameManager.Instance.AddScore(value);
+            GameManager.Instance.AddScore(value);
             Destroy(gameObject);   // gameObject, NOT this
         }
     }
