@@ -338,8 +338,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.20044123, y: 0.0040248646, z: -0.00076001236, w: -0.97969717}
-  m_LocalPosition: {x: -0.26786643, y: 5.628315, z: -14.075269}
+  m_LocalRotation: {x: -0.26075566, y: 0.005901065, z: -0.0015287224, w: -0.9653856}
+  m_LocalPosition: {x: 0.40710905, y: 7.5955606, z: -16.398354}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -868,7 +868,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score: '
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
